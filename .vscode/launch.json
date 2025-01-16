@@ -7,8 +7,8 @@
       "preLaunchTask": "docker-run: debug",
       "platform": "node",
       "node": {
-        "package": "${workspaceFolder}/ContainerAndImages/package.json",
-        "localRoot": "${workspaceFolder}/ContainerAndImages"
+        "package": "${workspaceFolder}/Networks_In_Docker/server1/package.json",
+        "localRoot": "${workspaceFolder}/Networks_In_Docker/server1"
       }
     }
   ]

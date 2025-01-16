@@ -6,12 +6,12 @@
       "label": "docker-build",
       "platform": "node",
       "dockerBuild": {
-        "dockerfile": "${workspaceFolder}/ContainerAndImages/Dockerfile",
-        "context": "${workspaceFolder}/ContainerAndImages",
+        "dockerfile": "${workspaceFolder}/Networks_In_Docker/server1/Dockerfile",
+        "context": "${workspaceFolder}/Networks_In_Docker/server1",
         "pull": true
       },
       "node": {
-        "package": "${workspaceFolder}/ContainerAndImages/package.json"
+        "package": "${workspaceFolder}/Networks_In_Docker/server1/package.json"
       }
     },
     {
@@ -20,7 +20,7 @@
       "dependsOn": ["docker-build"],
       "platform": "node",
       "node": {
-        "package": "${workspaceFolder}/ContainerAndImages/package.json"
+        "package": "${workspaceFolder}/Networks_In_Docker/server1/package.json"
       }
     },
     {
@@ -34,7 +34,7 @@
         }
       },
       "node": {
-        "package": "${workspaceFolder}/ContainerAndImages/package.json",
+        "package": "${workspaceFolder}/Networks_In_Docker/server1/package.json",
         "enableDebugging": true
       }
     }

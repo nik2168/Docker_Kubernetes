@@ -1,0 +1,54 @@
+name: dockertut
+services:
+  expressapp:
+    image: expressapp
+    environment:
+      - PORT=3333
+      - MONGO_URI=mongodb://nik21:Nik%401234@mongo:27017
+      - CLIENT_URL=http://localhost:3001
+    ports:
+      - 3333:3333
+    depends_on:
+      - mongo
+    container_name: node_container
+
+  mongo:
+    image: mongo
+    container_name: mongo_container
+    ports:
+      - 27017:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=nik21
+      - MONGO_INITDB_ROOT_PASSWORD=Nik@1234
+    volumes:
+      - nodeappvol:/data/db
+
+  client:
+    build: 
+      context: ./client
+      dockerfile: Dockerfile
+    image: nextapp
+    container_name: client_container
+    ports:
+      - 3001:3001
+    environment:
+      - PORT=3001
+      - NEXT_PUBLIC_SERVER=http://expressapp:3333
+    depends_on:
+      - expressapp
+    develop:
+      watch:  # build in docker compose for live changes in development mode in container
+       - path: ./client/package.json
+         action: rebuild
+       - path: ./client/package-lock.json
+         action: rebuild
+       - path: ./client
+         target: ./app
+         action: sync
+        
+    # volumes:
+    #   - ./client:/app #user to sync client dir with docker directory for live changes
+
+volumes:
+  nodeappvol:
+    driver: local

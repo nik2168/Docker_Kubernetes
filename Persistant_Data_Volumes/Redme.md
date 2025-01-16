@@ -1,13 +1,12 @@
 ## Containers are ephemerous and stateless
--> You usually don't store data in containers
--> Non-persistent data
-    Locally on a writable layer
-    It's the default, just write to the filesystem
-    When containers are destroyed, so the data inside them
-
- -> Persistent data
-    Stored outside the container in a volume
-    A volume is mapped to a logical folder
+* You usually don't store data in containers
+* Non-persistent data:
+    + Locally on a writable layer
+    + It's the default, just write to the filesystem
+    + When containers are destroyed, so the data inside them
+* Persistent data:
+    + Stored outside the container in a volume
+    + A volume is mapped to a logical folder
 
 ### Volumes in Docker
 
